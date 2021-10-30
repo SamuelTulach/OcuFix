@@ -1,0 +1,14 @@
+﻿<settings-container>
+  <horizontal horizontal-fit="PreferredSize">
+    <checkbox-setting apply-on-change="true" value="DisableASW" text="Disable ASW"/>
+  </horizontal>
+  <horizontal horizontal-fit="PreferredSize">
+    <checkbox-setting apply-on-change="true" value="ServerPriority" text="Set server/runtime priority"/>
+  </horizontal>
+  <horizontal horizontal-fit="PreferredSize">
+    <checkbox-setting apply-on-change="true" value="GamePriority" text="Set game priority"/>
+  </horizontal>
+  <horizontal horizontal-fit="PreferredSize">
+    <text text="Game restart needed to apply settings"/>
+  </horizontal>
+</settings-container>
