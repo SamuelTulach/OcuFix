@@ -3,12 +3,12 @@
   "id": "OcuFix",
   "name": "OcuFix",
   "author": "Otiosum",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "gameVersion": "1.18.1",
   "dependsOn": {
     "BSIPA": "^4.0.5",
-    "BeatSaberMarkupLanguage": "1.5.11" 
+    "BeatSaberMarkupLanguage": "^1.5.11"
   },
   "features": []
 }
