@@ -50,7 +50,7 @@ namespace OcuFix
                 AswHelper.CheckAswWrapper();
                 ProcessPriorityHelper.CheckPrioritiesWrapper();
 
-                Thread.Sleep(2000);
+                Thread.Sleep(20000);
             }
         }
     }
