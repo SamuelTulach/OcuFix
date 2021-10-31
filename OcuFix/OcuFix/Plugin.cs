@@ -31,7 +31,8 @@ namespace OcuFix
         [OnStart]
         public void OnApplicationStart()
         {
-            new GameObject("OcuFixController").AddComponent<OcuFixController>();
+            AswHelper.CheckAswWrapper();
+            ProcessPriorityHelper.CheckPrioritiesWrapper();
         }
 
         [OnExit]

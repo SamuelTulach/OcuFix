@@ -101,7 +101,6 @@
     <Compile Include="DebugToolControl.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Configuration\PluginConfig.cs" />
-    <Compile Include="OcuFixController.cs" />
     <Compile Include="ProcessPriorityHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
