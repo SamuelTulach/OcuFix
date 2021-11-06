@@ -8,6 +8,7 @@ using System.Linq;
 using BeatSaberMarkupLanguage.Settings;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR;
 using IPALogger = IPA.Logging.Logger;
 
 namespace OcuFix
@@ -31,7 +32,7 @@ namespace OcuFix
         [OnStart]
         public void OnApplicationStart()
         {
-            if (!Environment.CommandLine.ToLower().Contains("oculus"))
+            if (!XRSettings.loadedDeviceName.ToLower().Contains("oculus"))
             {
                 Plugin.Log.Warn("Oculus vrmode not set, ignoring");
                 return;
