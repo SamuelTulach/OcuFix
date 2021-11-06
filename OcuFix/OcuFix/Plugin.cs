@@ -31,13 +31,13 @@ namespace OcuFix
         [OnStart]
         public void OnApplicationStart()
         {
-            if (!Environment.CommandLine.Contains("oculus"))
+            if (!Environment.CommandLine.ToLower().Contains("oculus"))
             {
                 Plugin.Log.Warn("Oculus vrmode not set, ignoring");
                 return;
             }
 
-            if (Environment.CommandLine.Contains("fpfc"))
+            if (Environment.CommandLine.ToLower().Contains("fpfc"))
             {
                 Plugin.Log.Warn("FPFC mode enabled, ignoring");
                 return;
