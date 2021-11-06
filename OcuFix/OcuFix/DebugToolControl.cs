@@ -44,9 +44,13 @@ namespace OcuFix
             process.StartInfo.Arguments = $"/C call \"{debugToolPath}\" -f \"{CommandTempFile}\" > {OutputFile} 2>&1";
             process.Start();
 
-            Thread.Sleep(1000);
+            process.WaitForExit(3000);
 
-            process.WaitForExit();
+            // When Oculus service is not running
+            // Oculus debug tool CLI will be printing out forever
+            // "ERROR: Unable to start debug session, retrying..." 
+            if (!process.HasExited)
+                process.Kill();
 
             var output = File.ReadAllText(OutputFile);
 
