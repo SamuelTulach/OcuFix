@@ -8,6 +8,9 @@
   <horizontal horizontal-fit="PreferredSize">
     <checkbox-setting apply-on-change="true" value="GamePriority" text="Set game priority"/>
   </horizontal>
+	<horizontal horizontal-fit="PreferredSize">
+		<checkbox-setting apply-on-change="true" value="EnableChecks" text="Enable vrmode/FPFC check"/>
+	</horizontal>
   <horizontal horizontal-fit="PreferredSize">
     <text text="Game restart needed to apply settings"/>
   </horizontal>
