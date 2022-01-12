@@ -14,6 +14,15 @@ namespace OcuFix
         private const string CommandTempFile = "command_temp.txt";
         private const string OutputFile = "output_temp.txt";
 
+        public enum ASWMode
+        {
+            Unknown,
+            Disabled,
+            Auto,
+            Clock45,
+            Sim45
+        }
+
         private static string GetCommandOutput(string command)
         {
             // Executing the process directly and using standard output
@@ -66,16 +75,45 @@ namespace OcuFix
             return outputOnly;
         }
 
-        public static bool ASWEnabled()
+        public static ASWMode GetASWMode()
         {
             var output = GetCommandOutput("server:asw.Mode");
-            return output != "off";
+            switch (output)
+            {
+                case "off":
+                    return ASWMode.Disabled;
+                case "auto":
+                    return ASWMode.Auto;
+                case "Clock45":
+                    return ASWMode.Clock45;
+                case "Sim45":
+                    return ASWMode.Sim45;
+                default:
+                    return ASWMode.Unknown;
+            }
         }
 
-        public static bool DisableASW()
+        private static bool CheckCommand(string command, string target)
         {
-            var output = GetCommandOutput("server:asw.Off");
-            return output == "ASW operation disabled (off)";
+            var output = GetCommandOutput(command);
+            return output == target;
+        }
+
+        public static bool SetASWMode(ASWMode mode)
+        {
+            switch (mode)
+            {
+                case ASWMode.Disabled:
+                    return CheckCommand("server:asw.Off", "ASW operation disabled (off)");
+                case ASWMode.Auto:
+                    return CheckCommand("server:asw.Auto", "Auto ASW operation enabled");
+                case ASWMode.Clock45:
+                    return CheckCommand("server:asw.Clock45", "45 Hz rendering extrapolation enabled");
+                case ASWMode.Sim45:
+                    return CheckCommand("server:asw.Sim45", "45 Hz rendering simulation enabled");
+                default:
+                    return false;
+            }
         }
     }
 }

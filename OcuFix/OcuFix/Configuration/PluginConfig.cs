@@ -9,7 +9,9 @@ namespace OcuFix.Configuration
         public static PluginConfig Instance { get; set; }
 
         public virtual bool DisableASW { get; set; } = true;
-        public virtual bool ServerPriority { get; set; } = true;
+        public virtual bool RestoreASW { get; set; } = true;
+        public virtual bool SetPriority { get; set; } = true;
+        public virtual bool RestorePriority { get; set; } = true;
         public virtual bool GamePriority { get; set; } = true;
         public virtual string DebugToolPath { get; set; } = @"C:\Program Files\Oculus\Support\oculus-diagnostics\OculusDebugToolCLI.exe";
         public virtual bool EnableChecks { get; set; } = true;

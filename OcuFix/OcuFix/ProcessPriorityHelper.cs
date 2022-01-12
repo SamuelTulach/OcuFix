@@ -52,7 +52,7 @@ namespace OcuFix
             if (Configuration.PluginConfig.Instance.GamePriority)
                 CheckGame();
 
-            if (Configuration.PluginConfig.Instance.ServerPriority)
+            if (Configuration.PluginConfig.Instance.SetPriority)
             {
                 CheckRuntime();
                 CheckServer();

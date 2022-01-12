@@ -3,7 +3,13 @@
     <checkbox-setting apply-on-change="true" value="DisableASW" text="Disable ASW"/>
   </horizontal>
   <horizontal horizontal-fit="PreferredSize">
-    <checkbox-setting apply-on-change="true" value="ServerPriority" text="Set server/runtime priority"/>
+    <checkbox-setting apply-on-change="true" value="SetPriority" text="Set server/runtime priority"/>
+  </horizontal>
+  <horizontal horizontal-fit="PreferredSize">
+    <checkbox-setting apply-on-change="true" value="RestoreASW" text="Restore ASW"/>
+  </horizontal>
+  <horizontal horizontal-fit="PreferredSize">
+    <checkbox-setting apply-on-change="true" value="RestorePriority" text="Restore server/runtime priority"/>
   </horizontal>
   <horizontal horizontal-fit="PreferredSize">
     <checkbox-setting apply-on-change="true" value="GamePriority" text="Set game priority"/>
