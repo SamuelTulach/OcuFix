@@ -1,20 +1,17 @@
 ﻿<settings-container>
   <horizontal horizontal-fit="PreferredSize">
-    <checkbox-setting apply-on-change="true" value="DisableASW" text="Disable ASW"/>
+    <checkbox-setting apply-on-change="true" value="DisableASW" text="Disable ASW upon launch"/>
   </horizontal>
   <horizontal horizontal-fit="PreferredSize">
-    <checkbox-setting apply-on-change="true" value="SetPriority" text="Set server/runtime priority"/>
+    <checkbox-setting apply-on-change="true" value="SetPriority" text="Set server/runtime priority upon launch"/>
   </horizontal>
   <horizontal horizontal-fit="PreferredSize">
-    <checkbox-setting apply-on-change="true" value="RestoreASW" text="Restore ASW"/>
+    <checkbox-setting apply-on-change="true" value="GamePriority" text="Set game priority upon launch"/>
   </horizontal>
   <horizontal horizontal-fit="PreferredSize">
-    <checkbox-setting apply-on-change="true" value="RestorePriority" text="Restore server/runtime priority"/>
+    <checkbox-setting apply-on-change="true" value="Restore" text="Restore ASW mode and priorities when exiting"/>
   </horizontal>
   <horizontal horizontal-fit="PreferredSize">
-    <checkbox-setting apply-on-change="true" value="GamePriority" text="Set game priority"/>
-  </horizontal>
-	<horizontal horizontal-fit="PreferredSize">
 		<checkbox-setting apply-on-change="true" value="EnableChecks" text="Enable vrmode/FPFC check"/>
 	</horizontal>
   <horizontal horizontal-fit="PreferredSize">

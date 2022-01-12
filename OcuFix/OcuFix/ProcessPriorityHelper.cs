@@ -9,61 +9,64 @@ namespace OcuFix
 {
     internal static class ProcessPriorityHelper
     {
-        private static void CheckGame()
+        private static ProcessPriorityClass _targetGamePriorityClass = ProcessPriorityClass.High;
+        private static void SwapGame()
         {
             var currentProcess = Process.GetCurrentProcess();
-            if (currentProcess.PriorityClass != ProcessPriorityClass.High)
+            if (currentProcess.PriorityClass != _targetGamePriorityClass)
             {
-                currentProcess.PriorityClass = ProcessPriorityClass.High;
-                Plugin.Log.Info("Game priority set to high");
+                (currentProcess.PriorityClass, _targetGamePriorityClass) = (_targetGamePriorityClass, currentProcess.PriorityClass);
+                Plugin.Log.Info($"Game priority set");
             }
         }
 
-        private static void CheckRuntime()
+        private static ProcessPriorityClass _targetRuntimePriorityClass = ProcessPriorityClass.AboveNormal;
+        private static void SwapRuntime()
         {
             var runtimeProcesses = Process.GetProcessesByName("oculus-platform-runtime");
             if (runtimeProcesses.Length == 0)
                 return;
 
             var runtimeProcess = runtimeProcesses[0];
-            if (runtimeProcess.PriorityClass != ProcessPriorityClass.AboveNormal)
+            if (runtimeProcess.PriorityClass != _targetRuntimePriorityClass)
             {
-                runtimeProcess.PriorityClass = ProcessPriorityClass.AboveNormal;
-                Plugin.Log.Info("Runtime priority set to be above normal");
+                (runtimeProcess.PriorityClass, _targetRuntimePriorityClass) = (_targetRuntimePriorityClass, runtimeProcess.PriorityClass);
+                Plugin.Log.Info("Runtime priority set");
             }
         }
 
-        private static void CheckServer()
+        private static ProcessPriorityClass _targetServerPriorityClass = ProcessPriorityClass.AboveNormal;
+        private static void SwapServer()
         {
             var serverProcesses = Process.GetProcessesByName("OVRServer_x64");
             if (serverProcesses.Length == 0)
                 return;
 
             var serverProcess = serverProcesses[0];
-            if (serverProcess.PriorityClass != ProcessPriorityClass.AboveNormal)
+            if (serverProcess.PriorityClass != _targetServerPriorityClass)
             {
-                serverProcess.PriorityClass = ProcessPriorityClass.AboveNormal;
-                Plugin.Log.Info("Server priority set to be above normal");
+                (serverProcess.PriorityClass, _targetServerPriorityClass) = (_targetServerPriorityClass, serverProcess.PriorityClass);
+                Plugin.Log.Info("Server priority set");
             }
         }
         
-        private static void CheckPriorities()
+        private static void SwapPriorities()
         {
             if (Configuration.PluginConfig.Instance.GamePriority)
-                CheckGame();
+                SwapGame();
 
             if (Configuration.PluginConfig.Instance.SetPriority)
             {
-                CheckRuntime();
-                CheckServer();
+                SwapRuntime();
+                SwapServer();
             }
         }
 
-        public static void CheckPrioritiesWrapper()
+        public static void SwapPrioritiesWrapper()
         {
             try
             {
-                CheckPriorities();
+                SwapPriorities();
             }
             catch (Exception ex)
             {

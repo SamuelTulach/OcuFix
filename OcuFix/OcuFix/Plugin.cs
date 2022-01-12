@@ -54,7 +54,7 @@ namespace OcuFix
                 return;
 
             AswHelper.DisableAswWrapper();
-            ProcessPriorityHelper.CheckPrioritiesWrapper();
+            ProcessPriorityHelper.SwapPrioritiesWrapper();
         }
 
         [OnExit]
@@ -63,10 +63,11 @@ namespace OcuFix
             if (ShouldIgnore())
                 return;
 
-            if (PluginConfig.Instance.RestoreASW)
-                AswHelper.RestoreAswWrapper();
+            if (!PluginConfig.Instance.Restore)
+                return;
 
-
+            AswHelper.RestoreAswWrapper();
+            ProcessPriorityHelper.SwapPrioritiesWrapper();
         }
     }
 }
